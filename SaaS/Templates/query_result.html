@@ -1,0 +1,12 @@
+<html>
+<head>
+	<title>query result</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/all.css" />
+</head>
+<body>
+	<h1>All books belowed is created by {{author}}:</h1>
+	{% for book in query_result %}
+		<li>{{book}}</li>
+	{% endfor %}
+<body>
+</html>

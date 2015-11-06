@@ -1,0 +1,46 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/css/all.css" />
+	<title>SaaS</title>
+</head>
+<body>
+	<div>
+	<h1>Query books according to author</h1>
+	{% if form.errors %}
+		<p style="color: red;">
+			Please correct the error{{ form.errors|pluralize }} below.
+		</p>
+	{% endif %}
+	<form  action="" method="get">
+		<table class="left">
+		{{ form.as_table }}
+		</table>
+		<input type="submit" value="Submit">
+	</form>
+	</div>
+	<div>
+	<h1>All books:</h1>
+	<form action="" method="post">
+	{% for book in book_list %}
+		<td><a href = "/details/?ISBN={{book.ISBN|safe}}">{{book.Title}}</a></td>
+		<td><input  type="submit" name={{book.ISBN}} value="delete"></td>
+		<br/>	
+	{% endfor %}
+	</form>
+	</div>
+	<div>
+	<h1><a href = "/add/">Add a new book</a></h1>
+	</div>
+	<div>
+	<h1>select a book to update:</h1>
+	<form action="" method="post">
+	<select name = books>
+	{% for book in book_list %}
+		<option value={{book.ISBN}}>{{book.Title}}</option>
+	{% endfor %}
+	</select>
+	<input type="submit" value="Update">
+	</form>
+	<div>
+</body>
+</html>
